@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ski Resorts</title>
+</head>
+
+<body>
+    <h1>All Ski Resorts</h1>
+    <ul>
+        <% for (let skiresorts of skiresortss){%>
+        <li><%= skiresorts.title %></li>
+        <a href="/front/reviews">Add Review</a>
+        <% }%>
+    </ul>
+    <div>
+        <a href="/front/new">Add Ski Resorts</a>
+    </div>
+
+</body>
+
+</html>
