@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('front/boilerplate')%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ski Resorts</title>
-</head>
-
-<body>
-    <h1>All Ski Resorts</h1>
-    <ul>
-        <% for (let skiresorts of skiresortss){%>
-        <li><%= skiresorts.title %></li>
-        <a href="/front/reviews">Add Review</a>
-        <% }%>
-    </ul>
-    <div>
-        <a href="/front/new">Add Ski Resorts</a>
+<h1>All Ski Resorts</h1>
+<% for (let skiresorts of skiresortss){%>
+<div class="card" mb-3>
+     <div class="row">
+        <div class="col-md-4">
+            <img class="img-fluid" alt="" src="<%=skiresorts.image%>">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><%= skiresorts.title %> </h5>
+                <p class="card-text"><%= skiresorts.description %></p>
+                <p class="card-text">
+                    <small class="text-muted"><%= skiresorts.location%></small>
+                </p>
+                <a class="btn btn-primary" href="/front/<%=skiresorts._id%>">View </a>
+            </div>
+        </div>
     </div>
-
-</body>
-
-</html>
+</div>
+<% }%>
