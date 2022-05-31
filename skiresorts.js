@@ -1,13 +1,29 @@
 const mongoose = require('mongoose');
-const { stringify } = require('querystring');
+const Review = require('./review')
 const Schema = mongoose.Schema;
 
 const SkiresortsSchema = new Schema({
     title: String,
-    price: String,
+    image: String,
+    price: Number,
     description: String,
     location: String,
-    review: String
+    reviews: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Review'
+        }
+    ]
 });
+
+SkiresortsSchema.post('findOneAndDelete', async function (doc) {
+    if (doc) {
+        await Review.deleteMany({
+            _id: {
+                $in: doc.reviews
+            }
+        })
+    }
+})
 
 module.exports = mongoose.model('Skiresorts', SkiresortsSchema);

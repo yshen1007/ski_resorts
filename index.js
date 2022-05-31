@@ -15,7 +15,10 @@ const resortsDB = async () => {
     for (let i = 0; i < 26; i++) {
         const ski = new Skiresorts({
             location: `${information[i].country}`,
-            title: `${information[i].name}`
+            title: `${information[i].name}`,
+            image: `${information[i].image}`,
+            description: 'Nice place',
+            price: 50
         })
         await ski.save();
     }
